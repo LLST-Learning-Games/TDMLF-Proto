@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +10,9 @@ namespace TDMLF.Family
         [SerializeField] List<FamilyMember> familyMembersAtHome = new List<FamilyMember>();
         [SerializeField] Text resourceDisplayText;
         [SerializeField] int currentFamilyMemberIndex;
+        [SerializeField] House familyHome;
+        [SerializeField] int qualityOfLife;
+        
 
         private Vector2 homePos = new Vector2(-10, -4);
         private Vector2 homePosOffset = new Vector2(1, 0);
@@ -21,9 +23,18 @@ namespace TDMLF.Family
         void Start()
         {
             currentFamilyMemberIndex = familyMembersAtHome.Count;
+            qualityOfLife = UnityEngine.Random.Range(1,10);
             InitResources();
             //UpdateResource(new Resource(ResourceType.Bread, 5));
             ReadResources();
+            familyHome = new House();
+        }
+        private void InitResources()
+        {
+            foreach (ResourceType rType in Enum.GetValues(typeof(ResourceType)))
+            {
+                resourceTracker.Add(rType, 0);
+            }
         }
 
         public FamilyMember GetNextFamilyMember()
@@ -49,15 +60,7 @@ namespace TDMLF.Family
                 currentFamilyMemberIndex++;
             }
         }
-
-        private void InitResources()
-        {
-            foreach (ResourceType rType in Enum.GetValues(typeof(ResourceType)))
-            {
-                resourceTracker.Add(rType, 0);
-            }
-        }
-
+        
         private void ReadResources()
         {
             /*
@@ -84,10 +87,76 @@ namespace TDMLF.Family
             }
         }
 
-        // Update is called once per frame
-        void Update()
+
+        public void UpdateHousing(House newHouse)
         {
+            familyHome = newHouse;
+        }
+
+
+
+        public void AccountingStep()
+        {
+            PayRent();
+            FeedFamily();
+            UpdateQoL();
+            UpdateResourceReadout();
+        }
+
+        
+
+        private void FeedFamily()
+        {
+            int hungerModifier = 0;
+
+            if (resourceTracker[ResourceType.Bread] + resourceTracker[ResourceType.HealthyFood] < familyMembersAtHome.Count * 2)
+                hungerModifier = -5;
+            else if (resourceTracker[ResourceType.HealthyFood] < familyMembersAtHome.Count)
+                hungerModifier = -2;
+            else if (resourceTracker[ResourceType.HealthyFood] >= familyMembersAtHome.Count * 2)
+                hungerModifier = 2;
+
+            Debug.Log("Luxury Hunger Modifier of " + hungerModifier);
+
+            resourceTracker[ResourceType.Bread] = 0;
+            resourceTracker[ResourceType.HealthyFood] = 0;
+
+            resourceTracker[ResourceType.Luxury] += hungerModifier;
+        }
+
+        private void PayRent()
+        {
+            resourceTracker[ResourceType.Money] -= familyHome.rent;
+            Debug.Log("Paying rent of " + familyHome.rent);
+
+            if(familyHome.rooms < familyMembersAtHome.Count / 2)
+            {
+                resourceTracker[ResourceType.Luxury] -= 2;
+                Debug.Log("Overcrowded!");
+            }
+            else if (familyHome.rooms > familyMembersAtHome.Count)
+            {
+                resourceTracker[ResourceType.Luxury] += 2;
+                Debug.Log("Spatious flat bonus");
+            }
+
+            resourceTracker[ResourceType.Luxury] += familyHome.quality;
+            Debug.Log("flat quality modifier: " + familyHome.quality);
 
         }
+
+        private void UpdateQoL()
+        {
+            int luxQoLCompRatio = resourceTracker[ResourceType.Luxury] / 2;
+
+            if (luxQoLCompRatio >= qualityOfLife)
+                qualityOfLife++;
+            else if (resourceTracker[ResourceType.Luxury] < qualityOfLife)
+                qualityOfLife--;
+
+            resourceTracker[ResourceType.Luxury] = 0;
+        }
+
+
     }
 }

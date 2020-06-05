@@ -8,7 +8,7 @@ namespace TDMLF.Family
     {
 
         [SerializeField] bool isAssigned = false;
-        [SerializeField] float workTime = 5f;
+        [SerializeField] float workTime = 1f;
 
         
 
@@ -27,5 +27,9 @@ namespace TDMLF.Family
             isAssigned = false;
         }
 
+        public float GetWorkTime()
+        {
+            return workTime;
+        }
     }
 }

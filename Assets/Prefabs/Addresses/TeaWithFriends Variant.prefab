@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2064111197724687285
+--- !u!1001 &8526090983689292506
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,17 +10,17 @@ PrefabInstance:
     - target: {fileID: 723264606919080982, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_Name
-      value: Bakery
+      value: TeaWithFriends
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.93
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -30,17 +30,17 @@ PrefabInstance:
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -70,22 +70,17 @@ PrefabInstance:
     - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: locationName
-      value: Bakery
+      value: Cafe
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: actionName
-      value: Buy Bread
+      value: Tea With Friends
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: payout.rType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: payout.amt
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -97,20 +92,39 @@ PrefabInstance:
       propertyPath: cost.amt
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 2895747968921988427, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661364498553425651, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: xOffset
+    - target: {fileID: 1182883444, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2661364498553425651, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+    - target: {fileID: 1909240154, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909240154, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909240154, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909240154, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909240154, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782376233996777297, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
-      propertyPath: yOffset
-      value: 0.75
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782376233996777297, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}

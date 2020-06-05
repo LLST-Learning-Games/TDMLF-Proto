@@ -10,37 +10,37 @@ PrefabInstance:
     - target: {fileID: 723264606919080982, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_Name
-      value: Cafe
+      value: Construction Site
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.81
+      value: 21.202488
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.24
+      value: -102.9052
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 236.86357
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -66,6 +66,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+        type: 3}
+      propertyPath: locationName
+      value: Construction Site
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375255802652016581, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.14999962
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}

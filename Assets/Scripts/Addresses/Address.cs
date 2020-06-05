@@ -18,6 +18,7 @@ namespace TDMLF.Locations
         [SerializeField] FamilyManager familyManager = null;
         [SerializeField] Canvas myCanvas = null;
         [SerializeField] TextMeshProUGUI textBox = null;
+        [SerializeField] CountdownTimer myTimer = null;
 
         FamilyMember worker = null;
 
@@ -30,46 +31,62 @@ namespace TDMLF.Locations
                 myCanvas = GetComponentInChildren<Canvas>();
             if (textBox == null)
                 textBox = GetComponentInChildren<TextMeshProUGUI>();
+            if (myTimer == null)
+                myTimer = GetComponentInChildren<CountdownTimer>();
 
             PopulateTextBox();
-            myCanvas.gameObject.SetActive(false);
+            textBox.gameObject.SetActive(false);
+            myTimer.gameObject.SetActive(false);
         }
 
 
         private void OnMouseDown()
         {
-            if (worker != null)
-            {
-                familyManager.ReturnFamilyMember(worker);
-                worker = null;
-                return;
-            }
 
+            if (worker != null) return;
+
+            // Get the next worker from the Family Manager
             worker = familyManager.GetNextFamilyMember();
+
+            if (worker != null)
+                StartCoroutine(AssignWorker());
+        }
+
+        private IEnumerator AssignWorker()
+        {
+            
+            // Set the worker to "assigned"
             worker.AssignMe();
             worker.transform.position = transform.position + Vector3.back;
-            ProcessPayout();
+
+            // Start the timer bar
+            myTimer.gameObject.SetActive(true);
+            StartCoroutine(myTimer.CountDownAnimation(worker.GetWorkTime()));
+
+            familyManager.UpdateResource(cost);
+
+            // Wait for working to happen
+            yield return new WaitForSeconds(worker.GetWorkTime());
+
+            // Working is done, pay and bring home
+            familyManager.UpdateResource(payout);
+
             Debug.Log("Paid!");
+            familyManager.ReturnFamilyMember(worker);
+            worker = null;
         }
 
         private void OnMouseOver()
         {
-            myCanvas.gameObject.SetActive(true);
+            textBox.gameObject.SetActive(true);
         }
 
         private void OnMouseExit()
         {
-            myCanvas.gameObject.SetActive(false);
+            textBox.gameObject.SetActive(false);
         }
 
-        private void ProcessPayout()
-        {
-            //Process the cost:
-            familyManager.UpdateResource(cost);
-
-            //Process the payout:
-            familyManager.UpdateResource(payout);
-        }
+        
 
         private void PopulateTextBox()
         {
