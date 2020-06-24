@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2018048309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633891189424850851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe069fbbf70df74bb9162314b03b97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: 0
+  locationName: Bakery
+  actionName: Buy Subsidized Bread
+  familyManager: {fileID: 0}
+  myCanvas: {fileID: 0}
+  textBox: {fileID: 0}
+  myTimer: {fileID: 0}
+  payout:
+    rType: 2
+    amt: 6
+  cost:
+    rType: 0
+    amt: -1
 --- !u!1001 &2064111197724687285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15,12 +40,12 @@ PrefabInstance:
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.93
+      value: -3.9300003
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.21
+      value: 2.209999
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -30,17 +55,17 @@ PrefabInstance:
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -67,50 +92,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+    - target: {fileID: 2375255802652016581, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
-      propertyPath: locationName
-      value: Bakery
-      objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: actionName
-      value: Buy Bread
-      objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: payout.rType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: payout.amt
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: cost.rType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: cost.amt
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2895747968921988427, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661364498553425651, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: xOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661364498553425651, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: yOffset
-      value: 0.75
+      propertyPath: m_AnchoredPosition.x
+      value: 0.14999962
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+--- !u!1 &1633891189424850851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 723264606919080982, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2064111197724687285}
+  m_PrefabAsset: {fileID: 0}

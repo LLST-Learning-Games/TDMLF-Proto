@@ -13,7 +13,7 @@ namespace TDMLF.Locations
         // Start is called before the first frame update
         void Start()
         {
-            Transform target = GetComponentInParent<Address>().GetComponent<Transform>();
+            Transform target = GetComponentInParent<AddressBase>().GetComponent<Transform>();
             RectTransform canvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
             float offsetPosX = target.position.x + xOffset;

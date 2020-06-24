@@ -18,6 +18,17 @@ public class House
         if (rent < 5) rent = 5;
     }
 
+    public House(int seed)
+    {
+        rnd = new Random(seed);
+
+        rooms = rnd.Next(1, 4);
+        quality = rnd.Next(-2, 2);
+
+        rent = rooms * (quality + 3) * rnd.Next(3, 6);
+        if (rent < 5) rent = 5;
+    }
+
 
     public House(int newRooms, int newRent, int newQual)
     {

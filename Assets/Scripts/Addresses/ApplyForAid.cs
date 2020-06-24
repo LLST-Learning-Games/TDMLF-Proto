@@ -8,12 +8,11 @@ using System;
 
 namespace TDMLF.Locations
 {
-    public class HousingSearch : AddressBase
+    public class ApplyForAid : AddressBase
     {
         [SerializeField] Button[] buttons;
         [SerializeField] bool showButtons = false;
 
-        House[] housingOptions;
 
         new void Awake()
         {
@@ -22,7 +21,6 @@ namespace TDMLF.Locations
             buttons = GetComponentsInChildren<Button>();
             UpdateButtons();
 
-            housingOptions = new House[buttons.Length];
         }
 
         new void OnMouseDown()
@@ -49,7 +47,7 @@ namespace TDMLF.Locations
             //yield return new WaitForSeconds(0.1f);
 
             // Working is done, pay and bring home
-            DisplayHousingOptions();
+            StartAidApplicationProcess();
             //ChooseHouse(new House());
 
             //familyManager.ReturnFamilyMember(worker);
@@ -65,45 +63,36 @@ namespace TDMLF.Locations
         }
 
 
-        private void DisplayHousingOptions()
+        private void StartAidApplicationProcess()
         {
             ToggleButtons();
             
             for (int i = 0; i < buttons.Length; i++)
             {
-                // This is a slightly hacky trick: send the index along to set a new seed for the House() constructor.
-                // This should be replaced by a central random number manager at some point.
-                housingOptions[i] = new House(i + (int) Time.time*1000);
-                PopulateButtonText(buttons[i], housingOptions[i], i);
+                PopulateButtonText(buttons[i], i);
             }
         }
 
         public void OnButtonPress(int i)
         {
-            ChooseHouse(housingOptions[i]);
             ToggleButtons();
-
+            
+            familyManager.UpdateResource(new Resource((ResourceType)i, 5));
             familyManager.ReturnFamilyMember(worker);
             worker = null;
         }
 
-        private void PopulateButtonText(Button button, House house, int i)
+        private void PopulateButtonText(Button button, int i)
         {
             String s = "";
-            s = "Option #" + (i + 1).ToString();
-            s += "Rooms: " + house.rooms + "\n";
-            s += "Quality: " + house.quality + "\n";
-            s += "Rent: " + house.rent + "\n";
+            s = "What do you need? \n";
+            s += ((ResourceType)i).ToString();
 
-            //Debug.Log("Button String: " + s);
 
             button.GetComponentInChildren<Text>().text = s;
         }
 
-        private void ChooseHouse(House newHouse)
-        {
-            familyManager.UpdateHousing(newHouse);
-        }
+        
                               
         private void ToggleButtons()
         {

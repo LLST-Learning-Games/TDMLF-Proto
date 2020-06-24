@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 723264606919080979}
   - component: {fileID: 723264606919080976}
   - component: {fileID: 723264606919080977}
-  - component: {fileID: 723264606919080989}
   m_Layer: 0
   m_Name: RootAddress
   m_TagString: Untagged
@@ -408,30 +407,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &723264606919080989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723264606919080982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b197c4e6898e7846a68b596f7238413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  address: 0
-  locationName: Cafe
-  actionName: Work
-  payout:
-    rType: 0
-    amt: 3
-  cost:
-    rType: 3
-    amt: -5
-  familyManager: {fileID: 0}
-  myCanvas: {fileID: 0}
-  textBox: {fileID: 0}
 --- !u!1 &3461214888558188334
 GameObject:
   m_ObjectHideFlags: 0

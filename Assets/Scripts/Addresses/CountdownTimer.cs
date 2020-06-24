@@ -11,16 +11,12 @@ namespace TDMLF.Locations
         private Slider barSlider;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             barSlider = GetComponent<Slider>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
 
         public IEnumerator CountDownAnimation(float time)
         {

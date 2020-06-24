@@ -9,10 +9,14 @@ namespace TDMLF.Family
     {
         [SerializeField] List<FamilyMember> familyMembersAtHome = new List<FamilyMember>();
         [SerializeField] Text resourceDisplayText;
+        [SerializeField] Text housingDisplayText;
         [SerializeField] int currentFamilyMemberIndex;
-        [SerializeField] House familyHome;
         [SerializeField] int qualityOfLife;
-        
+
+        House familyHome;
+
+        const int HOMELESSNESS_PENALTY = -10;
+
 
         private Vector2 homePos = new Vector2(-10, -4);
         private Vector2 homePosOffset = new Vector2(1, 0);
@@ -25,9 +29,10 @@ namespace TDMLF.Family
             currentFamilyMemberIndex = familyMembersAtHome.Count;
             qualityOfLife = UnityEngine.Random.Range(1,10);
             InitResources();
-            //UpdateResource(new Resource(ResourceType.Bread, 5));
-            ReadResources();
-            familyHome = new House();
+            UpdateResourceReadout();
+
+            familyHome = null;
+            UpdateHousingReadout();
         }
         private void InitResources()
         {
@@ -61,39 +66,49 @@ namespace TDMLF.Family
             }
         }
         
-        private void ReadResources()
-        {
-            /*
-            foreach(var resource in resourceTracker)
-            {
-                Debug.Log("You have " + resource.Value.ToString() + " of " + resource.Key.ToString());
-            }
-            */
-            UpdateResourceReadout();
-        }
+        
 
         public void UpdateResource(Resource update)
         {
             resourceTracker[update.rType] += update.amt;
-            ReadResources();
+            UpdateResourceReadout();
         }
 
         private void UpdateResourceReadout()
         {
-            resourceDisplayText.text = "";
+            string s = "";
             foreach (ResourceType rType in Enum.GetValues(typeof(ResourceType)))
             {
-                resourceDisplayText.text += rType.ToString() + ": " + resourceTracker[rType].ToString() + "\n";
+                s += rType.ToString() + ": " + resourceTracker[rType].ToString() + "\n";
             }
+
+            s += "QoL: " + qualityOfLife;
+
+            resourceDisplayText.text = s;
         }
 
 
         public void UpdateHousing(House newHouse)
         {
             familyHome = newHouse;
+            UpdateHousingReadout();
         }
 
+        private void UpdateHousingReadout()
+        {
+            string s = "Family Home: \n";
 
+            if (familyHome == null)
+                s += "None. Family is homeless!\n";
+            else
+            {
+                s += "Rooms: " + familyHome.rooms + "\n";
+                s += "Quality: " + familyHome.quality + "\n";
+                s += "Rent: " + familyHome.rent + "\n";
+            }
+
+            housingDisplayText.text = s;
+        }
 
         public void AccountingStep()
         {
@@ -126,22 +141,30 @@ namespace TDMLF.Family
 
         private void PayRent()
         {
-            resourceTracker[ResourceType.Money] -= familyHome.rent;
-            Debug.Log("Paying rent of " + familyHome.rent);
-
-            if(familyHome.rooms < familyMembersAtHome.Count / 2)
+            if (familyHome != null)
             {
-                resourceTracker[ResourceType.Luxury] -= 2;
-                Debug.Log("Overcrowded!");
-            }
-            else if (familyHome.rooms > familyMembersAtHome.Count)
-            {
-                resourceTracker[ResourceType.Luxury] += 2;
-                Debug.Log("Spatious flat bonus");
-            }
+                resourceTracker[ResourceType.Money] -= familyHome.rent;
+                Debug.Log("Paying rent of " + familyHome.rent);
 
-            resourceTracker[ResourceType.Luxury] += familyHome.quality;
-            Debug.Log("flat quality modifier: " + familyHome.quality);
+                if (familyHome.rooms < familyMembersAtHome.Count / 2)
+                {
+                    resourceTracker[ResourceType.Luxury] -= 2;
+                    Debug.Log("Overcrowded!");
+                }
+                else if (familyHome.rooms > familyMembersAtHome.Count)
+                {
+                    resourceTracker[ResourceType.Luxury] += 2;
+                    Debug.Log("Spatious flat bonus");
+                }
+
+                resourceTracker[ResourceType.Luxury] += familyHome.quality;
+                Debug.Log("flat quality modifier: " + familyHome.quality);
+            }
+            else
+            {
+                Debug.Log("Homelessness penalty: " + HOMELESSNESS_PENALTY);
+                resourceTracker[ResourceType.Luxury] += HOMELESSNESS_PENALTY;
+            }
 
         }
 
@@ -150,9 +173,18 @@ namespace TDMLF.Family
             int luxQoLCompRatio = resourceTracker[ResourceType.Luxury] / 2;
 
             if (luxQoLCompRatio >= qualityOfLife)
+            {
+                Debug.Log("Luxuries is more than double QoL. QoL increases.");
                 qualityOfLife++;
-            else if (resourceTracker[ResourceType.Luxury] < qualityOfLife)
+            }
+            else if (resourceTracker[ResourceType.Luxury] < qualityOfLife && qualityOfLife > 0)
+            {
+                Debug.Log("Luxuries is less than QoL. QoL decreases.");
                 qualityOfLife--;
+                
+            }
+
+            Debug.Log("Quality of Life is now: " + qualityOfLife);
 
             resourceTracker[ResourceType.Luxury] = 0;
         }

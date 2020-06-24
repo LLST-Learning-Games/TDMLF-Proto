@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &61330710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373217544337159312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe069fbbf70df74bb9162314b03b97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: 0
+  locationName: Construction Site
+  actionName: Work
+  familyManager: {fileID: 0}
+  myCanvas: {fileID: 0}
+  textBox: {fileID: 0}
+  myTimer: {fileID: 0}
+  payout:
+    rType: 0
+    amt: 4
+  cost:
+    rType: 3
+    amt: -2
 --- !u!1001 &5943549488659875974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,22 +35,22 @@ PrefabInstance:
     - target: {fileID: 723264606919080982, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_Name
-      value: Construction Site
+      value: Cafe Variant
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.202488
+      value: -2.71
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -102.9052
+      value: -1.7900009
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 236.86357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723264606919080978, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
@@ -67,11 +92,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 723264606919080989, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
-        type: 3}
-      propertyPath: locationName
-      value: Construction Site
-      objectReference: {fileID: 0}
     - target: {fileID: 2375255802652016581, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -79,3 +99,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575eb4708e2e2c4438e75ae71d2baa7e, type: 3}
+--- !u!1 &6373217544337159312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 723264606919080982, guid: 575eb4708e2e2c4438e75ae71d2baa7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5943549488659875974}
+  m_PrefabAsset: {fileID: 0}
